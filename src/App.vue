@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h3>Cadastro:</h3>
-    <small id="nomeError" v-show="setError">Nome inválido tente novamente</small><br />
+    <small id="nomeError" v-show="setError">Nome inválido tente novamente</small
+    ><br />
     <input type="text" placeholder="nome" v-model="nomeField" /><br />
     <input type="email" placeholder="email" v-model="emailField" /><br />
     <input type="number" placeholder="idade" v-model="idadeField" /><br />
@@ -9,7 +10,7 @@
     <button @click="cadastrarUsuario">Cadastrar</button>
     <div v-for="(cliente, index) in clientes" :key="cliente.id">
       <h4>{{ index + 1 }}</h4>
-      <Cliente :cliente="cliente" />
+      <Cliente :cliente="cliente" @Delete="deletarUsuario($event)" />
     </div>
   </div>
 </template>
@@ -63,12 +64,18 @@ export default {
         this.setError = false;
       }
     },
+
+    deletarUsuario: function ($event) {
+      var id = $event.idCliente;
+      var newArray = this.clientes.filter((cliente) => cliente.id != id);
+      this.clientes = newArray;
+    },
   },
 };
 </script>
 
 <style scoped>
-#nomeError{
+#nomeError {
   color: red;
 }
 </style>
