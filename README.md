@@ -22,8 +22,13 @@ vue create nomedoProjeto
 
 # Vue.JS
 
-O Vue.Js é um framework SPA(Single Page Application), ou seja, ele apenas executa a aplicação em uma única página sem necessidade de recarregamento da página por completo. 
+O Vue.Js é um framework SPA(Single Page Application), ou seja, ele apenas executa a aplicação em uma única página sem necessidade de recarregamento da página por completo.
 
 ### App.vue
 
 Esse componente é o componente raíz da aplicação, desse modo, tudo que será implementado nele afeta a estrutura da página apresentada.
+
+# 🎉 Agradecimentos
+
+Este é um pequeno projeto de estudo sobre VueJS e outras tecnologia.
+Outros resumos como esse estarão disponíveis em outros repositórios.
