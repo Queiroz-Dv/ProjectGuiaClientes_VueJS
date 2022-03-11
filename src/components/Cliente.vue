@@ -3,7 +3,8 @@
     <h4>Nome:{{ cliente.nome }}</h4>
     <hr />
     <p>Email: {{ cliente.email }}</p>
-    <p v-if="showIdade === true">Idade: {{ cliente.idade }}</p>
+    <p v-if="showIdade === false">Idade: {{ cliente.idade }}</p>
+    <button @click="mudarCor($event)">Mude a cor!</button>
   </div>
 </template>
 
@@ -19,6 +20,13 @@ export default {
     cliente: Object,
     showIdade: Boolean,
   },
+
+  methods:{
+    mudarCor: function($event) {
+      console.log($event)
+      this.isPremium = !this.isPremium;
+    }
+  }
 };
 </script>
 

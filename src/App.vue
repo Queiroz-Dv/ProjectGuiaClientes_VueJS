@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+    <h3>Cadastro:</h3>
+    <small id="nomeError" v-show="setError">Nome inválido tente novamente</small><br />
+    <input type="text" placeholder="nome" v-model="nomeField" /><br />
+    <input type="email" placeholder="email" v-model="emailField" /><br />
+    <input type="number" placeholder="idade" v-model="idadeField" /><br />
+    <hr />
+    <button @click="cadastrarUsuario">Cadastrar</button>
     <div v-for="(cliente, index) in clientes" :key="cliente.id">
-      <h4>{{ index + 1}}</h4>
+      <h4>{{ index + 1 }}</h4>
       <Cliente :cliente="cliente" />
-      <hr>
-      <h4> Edição: </h4>
-      <input type="text" v-model="cliente.nome">
-      <input type="text" v-model="cliente.email">
     </div>
   </div>
 </template>
@@ -18,26 +21,10 @@ export default {
   name: "App",
   data() {
     return {
-      Objcliente: {
-        nome: "Eduardo Queiroz",
-        email: "queiroz.dev@outlook.com",
-        idade: 26,
-      },
-      Objcliente2: {
-        nome: "Naylane Andrade",
-        email: "nay@gmail.com",
-        idade: 22,
-      },
-      Objcliente3: {
-        nome: "Larissa Rocha",
-        email: "lhara@gmail.com",
-        idade: 24,
-      },
-      Objcliente4: {
-        nome: "Patrícia Ribeiro",
-        email: "patricia.ribeiro@gmail.com",
-        idade: 28,
-      },
+      setError: false,
+      nomeField: "",
+      emailField: "",
+      idadeField: 0,
 
       clientes: [
         {
@@ -52,12 +39,6 @@ export default {
           email: "helena@gmail.com",
           idade: 27,
         },
-        {
-          id: 3,
-          nome: " Daniela Silva",
-          email: "dani@gmail.com",
-          idade: 20,
-        },
       ],
     };
   },
@@ -65,8 +46,29 @@ export default {
     Cliente,
     //Produto
   },
+  methods: {
+    cadastrarUsuario: function () {
+      if (this.nomeField == "" || this.nomeField || this.nomeField.length < 3) {
+        this.setError = true;
+      } else {
+        this.clientes.push({
+          nome: this.nomeField,
+          email: this.emailField,
+          idade: this.idadeField,
+          id: Date.now(),
+        });
+        this.nomeField = "";
+        this.emailField = "";
+        this.idadeField = 0;
+        this.setError = false;
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
+#nomeError{
+  color: red;
+}
 </style>
