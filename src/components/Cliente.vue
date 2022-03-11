@@ -28,7 +28,7 @@ export default {
       this.isPremium = !this.isPremium;
     },
     deleteEvent: function () {
-      console.log("Emitindo evento filho")
+      console.log("Emitindo evento filho");
       this.$emit("Delete");
     },
   },
